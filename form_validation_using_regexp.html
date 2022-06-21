@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User details</title>
+</head>
+<body>
+    <form name="user">
+    <fieldset>
+        <legend> User details: </legend>
+        <label for="name">Enter your name: </label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="age">Enter your age: </label>
+        <input type="number" id="age" name="age" required>
+        <br>
+        <label for="gender">Enter your gender: </label>
+        <input type="text" id="gender" name="gender" required>
+
+    </fieldset>
+    <fieldset>
+        <legend> card details: </legend>
+        
+        <label for="cardno">Card number: </label>
+        <input type="number" name="cardno" id="cardno" required>
+        <br>
+        <label for="cvv"> Enter your cvv: </label>
+        <input type="number" name="cvv" id="cvv" required>
+        <br>        
+        <label for="cardtype">Enter the type: </label>
+        <input type="text" name="cardtype" id="cardtype" required>
+        <br>
+    </fieldset>
+    <input type="submit" onclick="myfunc()">
+    </form>
+
+    <script>
+    function myfunc() {
+        var x=document.forms.user.cardno.value;
+        var x1=document.getElementById("cardtype").value;
+        
+        let text;
+        if(x1 == "AmericanExpress")
+        {
+            let re= /^(?:3[47][0-9]{13})$/
+
+            if(re.test(x))
+                return true;
+            else
+             {
+                alert('Not american express!!');
+                return false;
+             }
+        }
+
+        var cn=document.getElementById("cardn0").value;
+		var l=document.getElementById("cardno").value.length;
+		var c=cn.toString().slice(0,2);
+		var v=cn.toString().slice(0,1);
+		if(c==34 || c==37)
+		{
+			if(l!=15)
+			{
+				alert('failure!! Card issuer: American Express');
+			}
+			else
+			{
+				alert('success!! Card issuer: American Express');
+			}
+		}
+		else if(c==60 || c==65 || c==81 || c==82)
+		{
+			if(l!=16)
+			{
+				alert('failure!! Card issuer: Rupay');
+			}
+			else
+			{
+				alert('success!! Card issuer: Rupay');
+			}
+		}
+		else if(c>=51 && c<=55)
+		{
+			if(l!=16)
+			{
+				alert('failure!! Card issuer: Mastercard');
+			}
+			else
+			{
+				alert('success!! Card issuer: Mastercard');
+			}
+		}
+		else if(v==4)
+		{
+			if(l!=13 && l!=16)
+			{
+				alert('failure!! Card issuer: Visa');
+			}
+			else
+			{
+				alert('success!! Card issuer: Visa');
+			}
+		}
+		else
+		{
+			alert('failure');
+		}
+
+		
+	}
+    </script>
+</body>
+</html>
